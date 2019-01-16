@@ -1,0 +1,132 @@
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  font-family: monospace;
+}
+
+/*
+pre {
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 180%;
+  font-weight: bold;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+*/
+
+main,
+.cell,
+.modal {
+  /*border: solid 0.075em #000;*/
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(2em * var(--columns));
+  box-sizing: content-box;
+  transform: translate(-50%, -50%);
+  font-size: 180%;
+  font-weight: bold;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.board--game-over {
+  pointer-events: none;
+}
+
+.cell {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 0.01em;
+}
+
+.cell--unrevealed {
+  color: transparent;
+  background: #ddd;
+  box-shadow: 0 0 0 0.082em #ddd;
+}
+
+.cell--flagged::before,
+.cell--flagged::after {
+}
+
+.debug .cell--unrevealed {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.cell--unrevealed.cell--flagged::before,
+.cell--unrevealed.cell--flagged::after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.cell--unrevealed.cell--flagged::before {
+  top: 0.425em;
+  left: 0.6em;
+  width: 0.1em;
+  height: 1em;
+  background: #000;
+}
+
+.cell--unrevealed.cell--flagged::after {
+  top: 0.475em;
+  left: 0.8em;
+  border: solid 0.3em transparent;
+  border-width: 0.3em 0 0.3em 0.6em;
+  border-left-color: #f63;
+}
+
+.cell--top-left-revealed {
+  border-top-left-radius: 0.2em;
+}
+
+.cell--top-right-revealed {
+  border-top-right-radius: 0.2em;
+}
+
+.cell--bottom-right-revealed {
+  border-bottom-right-radius: 0.2em;
+}
+
+.cell--bottom-left-revealed {
+  border-bottom-left-radius: 0.2em;
+}
+
+
+.modal {
+  padding: 0.925em 2em;
+  position: absolute;
+  top: calc(2em * 2);
+  left: calc(2em * 2);
+  width: calc(2em * calc(var(--columns) - 4));
+  background: #f63;
+  line-height: 2em;
+}
